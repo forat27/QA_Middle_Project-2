@@ -12,7 +12,8 @@ class TestWebDriverUniversity:
     @pytest.fixture(scope="class")
     def setup(self):
         """Setup WebDriver for each test class."""
-        self.driver = webdriver.Chrome()
+        #self.driver = webdriver.Chrome()
+        self.driver = webdriver.Edge()
         self.driver.set_window_size(1296, 688)
         yield self.driver  # This makes driver available in each test
         self.driver.quit()
