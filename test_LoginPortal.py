@@ -12,7 +12,8 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class TestLoginPortal():
   def setup_method(self, method):
-    self.driver = webdriver.Chrome()
+    # self.driver = webdriver.Chrome()
+    self.driver = webdriver.Edge()
     self.vars = {}
   
   def teardown_method(self, method):

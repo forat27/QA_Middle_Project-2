@@ -7,7 +7,8 @@ import time
 # Initialize WebDriver
 @pytest.fixture(scope="module")
 def driver():
-    driver = webdriver.Chrome()
+    #driver = webdriver.Chrome()
+    driver = webdriver.Edge()
     driver.get("https://webdriveruniversity.com/Popup-Alerts/index.html")
     yield driver
     driver.quit()
