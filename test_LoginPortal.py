@@ -11,8 +11,8 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class TestLoginPortal():
   def setup_method(self, method):
-    # self.driver = webdriver.Chrome()
-    self.driver = webdriver.Edge()
+    #self.driver = webdriver.Edge()
+    self.driver = webdriver.Chrome()
     self.vars = {}
   
   def teardown_method(self, method):
@@ -25,7 +25,7 @@ class TestLoginPortal():
     if len(wh_now) > len(wh_then):
       return set(wh_now).difference(set(wh_then)).pop()
   
-  def test_ValidCredentials(self):
+  def test_ValidCredintals(self):
     self.driver.get("https://webdriveruniversity.com/")
     self.driver.set_window_size(1296, 688)
     self.vars["window_handles"] = self.driver.window_handles
@@ -39,7 +39,6 @@ class TestLoginPortal():
     self.driver.find_element(By.ID, "login-button").click()
     time.sleep(2)
     assert self.driver.switch_to.alert.text == "validation succeeded"
-
 
   @pytest.mark.parametrize("username, password, expected_alert", [
         ("webdriver2", "webdriver321", "validation succeeded"),

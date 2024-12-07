@@ -10,11 +10,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from datetime import datetime
 
-
 class TestDatePickerOpen():
   def setup_method(self, method):
-    # self.driver = webdriver.Chrome()
-    self.driver = webdriver.Edge()
+    self.driver = webdriver.Chrome()
+    #self.driver = webdriver.Edge()
     self.vars = {}
   
   def teardown_method(self, method):
@@ -28,19 +27,14 @@ class TestDatePickerOpen():
       return set(wh_now).difference(set(wh_then)).pop()
   
 #clicking on the input field or icon to open calender (2 tests)
-  def test_datePickerOpen(self):
-    self.driver.get("https://webdriveruniversity.com/Datepicker/index.html")
-    self.driver.set_window_size(1296, 688)
-    self.driver.find_element(By.CSS_SELECTOR, ".glyphicon").click() 
-    elements = self.driver.find_elements(By.CSS_SELECTOR, ".datepicker")
-    assert len(elements) > 0
-    time.sleep(2)
-    self.driver.get("https://webdriveruniversity.com/Datepicker/index.html")
-    self.driver.set_window_size(1296, 688)
-    self.driver.find_element(By.CSS_SELECTOR,".form-control").click()
-    elements = self.driver.find_elements(By.CSS_SELECTOR, ".datepicker")
-    assert len(elements) > 0
-    time.sleep(2)
+  @pytest.mark.parametrize("selector", [".glyphicon", ".form-control"])
+  def test_datePickerOpen(self, selector):
+      self.driver.get("https://webdriveruniversity.com/Datepicker/index.html")
+      self.driver.set_window_size(1296, 688)
+      self.driver.find_element(By.CSS_SELECTOR, selector).click()
+      elements = self.driver.find_elements(By.CSS_SELECTOR, ".datepicker")
+      assert len(elements) > 0
+      time.sleep(2)
   
 
 #current date is pre selected
