@@ -28,7 +28,7 @@ class TestWebDriverUniversity:
         
 
 #drag and drop the element in a valid zone to see if the color of zone changes.
-    def test_draganddrop(self, setup):
+    def test_draganddrop1(self, setup):
         driver = setup
         driver.get("https://webdriveruniversity.com/")
         driver.find_element(By.CSS_SELECTOR, "#actions h1").click()
